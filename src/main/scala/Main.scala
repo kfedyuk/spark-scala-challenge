@@ -103,7 +103,6 @@ object Main {
 
     //Create dataframe df_4 containing the number of applications, the average rating and the average sentiment polarity by genre
     val df_4 = exploded_genres.groupBy("Genre").agg(count("App").alias("Count"), avg("Rating").alias("Average_Rating"), avg("Average_Sentiment_Polarity").alias("Average_Sentiment_Polarity"))
-    df_4.show()
 
     //store the merged dataframe as parquet file
     df_4.write.mode(SaveMode.Overwrite).option("compression","gzip").parquet("src/main/resources/googleplaystore_metrics")
